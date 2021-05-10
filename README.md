@@ -17,6 +17,25 @@
   
 - Updates (06/2020) : We recently further rephrased some of the human annotated questions and released a new version of natural language questions in `mimicsql_data/mimicsql_natual_v2`. The model performance on this new version of data can be found below.
 
+## Setup
+```
+docker run --gpus all -it --entrypoint bash -v /home/tamnguyen/tvk/mimicsql:/mimicsql nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+cd /mimicsql
+apt update && apt -y upgrade
+apt install -y wget git curl unzip tmux vim
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
+apt-get update
+pip install numpy scipy sklearn matplotlib argparse glob2
+pip install http://download.pytorch.org/whl/cu90/torch-0.4.0-cp36-cp36m-linux_x86_64.whl
+pip install torchvision==0.2.2
+git clone https://github.com/wangpinggl/TREQS
+cd /mimicsql/TREQS/LeafNATS/tools/rouge_package
+./run.sh
+
+```
+
 ## Citation
 Ping Wang, Tian Shi, and Chandan K. Reddy. "Text-to-SQL Generation for Question Answering on Electronic Medical Records." In Proceedings of The Web Conference 2020 (WWW’20), pp. 350-361, 2020.
 
