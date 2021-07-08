@@ -23,8 +23,13 @@ docker run --gpus all -it --entrypoint bash -v /home/tamnguyen/tvk/mimicsql:/mim
 cd /mimicsql
 apt update && apt -y upgrade
 apt install -y wget git curl unzip tmux vim
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh
+chmod +x Miniconda3-4.5.4-Linux-x86_64.sh
+./Miniconda3-4.5.4-Linux-x86_64.sh -b -f -p /mimicsql/miniconda3
+export PATH="/mimicsql/miniconda3/bin:$PATH"
+echo ". /mimicsql/miniconda3/etc/profile.d/conda.sh" >> ~/.bashrc
+echo "conda activate" >> ~/.bashrc
+source ~/.bashrc
 
 apt-get update
 pip install numpy scipy sklearn matplotlib argparse glob2
